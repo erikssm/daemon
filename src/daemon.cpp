@@ -20,6 +20,7 @@
 
 using namespace std;
 
+#define LOG_FILE_NAME           "daemon"
 #define UPDATER_SLEEP_SEC       2
 
 bool g_daemon = false;
@@ -66,7 +67,7 @@ void DebugPrint(const char *format, ...)
     	struct tm tm = *localtime(&t);
 
     	char filename[FILENAME_MAX];
-    	sprintf(filename, "/tmp/slvagent.%d-%d-%d.log", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
+    	sprintf(filename, "/tmp/" LOG_FILE_NAME ".%d-%d-%d.log", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday);
 
     	FILE *fp;
     	fp=fopen(filename, "a");
